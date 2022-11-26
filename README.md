@@ -128,4 +128,3 @@ Documented commands (type help <topic>):
 EOF  all  count  create  destroy  help  quit  show  update
 
 (hbnb)
-
