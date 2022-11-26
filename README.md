@@ -128,8 +128,9 @@ Documented commands (type help <topic>):
 EOF  all  count  create  destroy  help  quit  show  update
 
 (hbnb)
+```
 
-## Authors:
+## Authors
 
--[Esosa Omoigui](https://github.com/Esosa-phillip)
--[Oluwafunsho Anifowoshe](https://github.com/Funshoalice)
+- [Esosa Omoigui](https://github.com/Esosa-phillip)
+- [Oluwafunsho Anifowoshe](https://github.com/Funshoalice)
