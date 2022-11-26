@@ -91,7 +91,7 @@ With the show command, the instance is displayed, returning a dictionary of the 
 
 With the update command, the attributes of the instances are updated.
 ```
-(hbnb) update BaseModel 404edd71-8b1a-46a3-9c9a-5fb91feadce0 first_name "Mulubrhan"
+(hbnb) update BaseModel 404edd71-8b1a-46a3-9c9a-5fb91feadce0 first_name "Esosa"
 (hbnb) show BaseModel 404edd71-8b1a-46a3-9c9a-5fb91feadce0
 [BaseModel] (404edd71-8b1a-46a3-9c9a-5fb91feadce0) {'id': '404edd71-8b1a-46a3-9c9a-5fb91feadce0', 'created_at': datetime.datetime(2022, 8, 8, 2, 54, 59, 25930), 'updated_at': datetime.datetime(2022, 8, 8, 2, 59, 45, 232383), 'first_name': 'Esosa'}
 (hbnb)
@@ -128,3 +128,8 @@ Documented commands (type help <topic>):
 EOF  all  count  create  destroy  help  quit  show  update
 
 (hbnb)
+
+## Authors:
+
+-[Esosa Omoigui](https://github.com/Esosa-phillip)
+-[Oluwafunsho Anifowoshe](https://github.com/Funshoalice)
