@@ -35,7 +35,7 @@ class Robot:
         """Prints the current population"""
         print("There are currently {:d} robots.".format(cls.population))
 
-    
+
 new = Robot("Siri")
 current = Robot("Alexa")
 top = Robot("Waw")
