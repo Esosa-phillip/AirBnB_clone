@@ -1,61 +1,50 @@
 #!/usr/bin/python3
 """
-Module File storage
+Class that serializes instances to a JSON file
+and deserializes JSON file to instances
 """
 import json
-from models.amenity import Amenity
-from models.base_model import BaseModel
-from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
-from models.user import User
+import os
 
 
 class FileStorage:
-    """
-    This class that serializes instances to a JSON file
-    and deserializes JSON file to instances:
-    """
-    __file_path = 'file.json'
+    """ Class that serializes and deserializes JSON objects """
+    __file_path = "file.json"
     __objects = {}
-    classes_dict = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
-                    "Place": Place, "Review": Review, "State": State,
-                    "User": User}
 
     def all(self):
-        """Return the dictionary of __object class attributes
-        (ex: <class>.<id>)
-        """
-        return self.__objects
+        """ Returns the dictionary __objects """
+        return FileStorage.__objects
 
     def new(self, obj):
-        """Add new obj to existing __object class attributes"""
-        if obj is not None:
-            key = "{}.{}".format(obj.__class__.__name__, obj.id)
-            self.__objects[key] = obj
+        """ Sets in __objects the obj with key <obj class name >.id """
+        key = obj.__class__.__name__ + "." + obj.id
+        FileStorage.__objects[key] = obj
 
     def save(self):
-        """Save serializes __objects to json file (__file_path:file.json)"""
-        dic = {}
+        """ Serializes __objects to the JSON file """
+        dictionary = {}
 
-        for key, obj in self.__objects.items():
-            if obj:
-                dic[key] = obj.to_dict()
-        #  write dict to file
-        with open(self.__file_path, 'w') as fd:
-            json.dump(dic, fd)
+        for key, value in FileStorage.__objects.items():
+            dictionary[key] = value.to_dict()
+
+        with open(FileStorage.__file_path, 'w') as f:
+            json.dump(dictionary, f)
 
     def reload(self):
-        """ deserializes the JSON file to __objects instances
-        (only if the JSON file (__file_path) exists
-        """
-        try:
-            with open(self.__file_path, 'r') as fd:
-                new_obj = json.load(fd)
-            for key, val in new_obj.items():
-                class_name = val['__class__']
-                class_name = self.classes_dict[class_name]
-                self.__objects[key] = class_name(**val)
-        except FileNotFoundError:
-            pass
+        """ Deserializes __objects from the JSON file """
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.place import Place
+        from models.city import City
+        from models.amenity import Amenity
+        from models.state import State
+        from models.review import Review
+        dct = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
+               'City': City, 'Amenity': Amenity, 'State': State,
+               'Review': Review}
+
+        if os.path.exists(FileStorage.__file_path) is True:
+            with open(FileStorage.__file_path, 'r') as f:
+                for key, value in json.load(f).items():
+                    self.new(dct[value['__class__']](**value))
