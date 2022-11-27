@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""A Beautiful code that passes the
+pycodestyle checks."""
+
 
 class Robot:
     """Represents a robot with a name"""
@@ -8,15 +11,13 @@ class Robot:
     population = 0
 
     def __init__(self, name):
-        """intializes the data"""
-
+        """Initializes the data"""
         self.name = name
-        print("(Intializing {})".format(self.name))
+        print("(Initializing {})".format(self.name))
         Robot.population += 1
 
     def die(self):
-        """I'm dying"""
-
+        """Kill Robot"""
         print("{} is being destroyed!".format(self.name))
         Robot.population -= 1
 
@@ -27,26 +28,25 @@ class Robot:
 
     def say_hi(self):
         """Greeting by the robot"""
-
-        print("Greating, my master call me {}".format(self.name))
+        print("Greetings, I am called {}".format(self.name))
 
     @classmethod
     def how_many(cls):
-        """Prints the currrent population"""
-        print("we have {:d} robots.".format(cls.population))
+        """Prints the current population"""
+        print("There are currently {:d} robots.".format(cls.population))
 
 
-new = Robot("Alexa")
-current = Robot("Google_assistance")
+new = Robot("Siri")
+current = Robot("Alexa")
 top = Robot("Waw")
 new.say_hi()
 current.say_hi()
 top.say_hi()
 Robot.how_many()
-print("All done robots finished their task")
+print("All robots finished their task")
 new.die()
 top.die()
 Robot.how_many()
 current.die()
 Robot.how_many()
-print("Today is awesome")
+print("Awesome")
