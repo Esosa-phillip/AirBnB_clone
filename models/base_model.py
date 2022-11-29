@@ -37,6 +37,7 @@ class BaseModel:
         """updates last update time
         """
         self.updated_at = datetime.now()
+        from models.__init__ import storage
         storage.save()
 
     def to_dict(self):
