@@ -5,6 +5,8 @@ header {
 	border-bottom: 1px solid #cccccc;
 	display: flex;
 	align-items: center;
+	background-image: url(../images/logo.png);
+	background-repeat: no-repeat;
 }
 
 header div {
